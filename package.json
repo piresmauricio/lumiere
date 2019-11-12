@@ -1,4 +1,9 @@
 {
   "private": true,
-  "workspace": ["packages/*"]
+  "workspace": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "redux-persist": "^6.0.0"
+  }
 }
