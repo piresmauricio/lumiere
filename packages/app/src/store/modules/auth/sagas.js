@@ -18,14 +18,16 @@ export function* signIn({ payload }) {
 
     if (!user.provider) {
       toast.error('Usuário não é prestador de serviço');
-      console.tron.error('Usuário não é prestador de serviço');
       return;
     }
+
+    // Inserindo Token JWT no Header de toda requisição da aplicação, uma vez logado
+    api.defaults.headers.Authorization = `Bearer ${token}`;
 
     yield put(signInSuccess(token, user));
     history.push('/dashboard');
   } catch (err) {
-    toast.error('Falha na autênticação, verifique seus dados');
+    toast.error('Falha na autenticação, verifique seus dados');
     yield put(signFailure());
   }
 }
@@ -48,7 +50,18 @@ export function* signUp({ payload }) {
   }
 }
 
+export function setToken({ payload }) {
+  if (!payload) return;
+
+  const { token } = payload.auth;
+
+  if (token) {
+    api.defaults.headers.Authorization = `Bearer ${token}`;
+  }
+}
+
 export default all([
+  takeLatest('persist/REHYDRATE', setToken),
   takeLatest('@auth/SIGN_IN_REQUEST', signIn),
   takeLatest('@auth/SIGN_UP_REQUEST', signUp),
 ]);
