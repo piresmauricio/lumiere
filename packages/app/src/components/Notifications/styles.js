@@ -36,6 +36,8 @@ export const NotificationList = styled.div`
   border-radius: 5px;
   padding: 15px 5px;
 
+  visibility: ${props => (props.visible ? 'visible' : 'hidden')};
+
   &::before {
     content: '';
     position: absolute;
