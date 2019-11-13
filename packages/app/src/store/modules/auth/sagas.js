@@ -1,4 +1,5 @@
 import { takeLatest, call, put, all } from 'redux-saga/effects';
+import { toast } from 'react-toastify';
 
 import history from '~/service/history';
 import api from '~/service/api';
@@ -16,14 +17,15 @@ export function* signIn({ payload }) {
     const { token, user } = response.data;
 
     if (!user.provider) {
+      toast.error('Usuário não é prestador de serviço');
       console.tron.error('Usuário não é prestador de serviço');
       return;
     }
 
     yield put(signInSuccess(token, user));
-
     history.push('/dashboard');
-  } catch(err) {
+  } catch (err) {
+    toast.error('Falha na autênticação, verifique seus dados');
     yield put(signFailure());
   }
 }
