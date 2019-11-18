@@ -45,6 +45,8 @@ export function* signUp({ payload }) {
 
     history.push('/');
   } catch (err) {
+    console.error(err);
+
     toast.error('Falha no cadastro, verifique seus dados');
     yield put(signFailure());
   }

@@ -23,7 +23,11 @@ module.exports = {
         references: { model: 'users', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
-        allowNull: true,
+      },
+      cancellable: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: true,
+        allowNull: false,
       },
       canceled_at: {
         type: Sequelize.DATE,
