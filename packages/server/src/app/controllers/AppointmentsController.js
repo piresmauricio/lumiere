@@ -111,7 +111,6 @@ class AppointmentController {
       });
       return res.json(appointments);
     } catch (err) {
-      console.log(err);
       return res.status(500).send();
     }
   }
