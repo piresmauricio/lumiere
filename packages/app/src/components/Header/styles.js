@@ -47,6 +47,7 @@ export const Profile = styled.div`
     margin-right: 10px;
 
     strong {
+      margin-top: 6px;
       display: block;
       color: #333;
     }
@@ -60,8 +61,9 @@ export const Profile = styled.div`
   }
 
   img {
-    width: 32px;
-    height: 32px;
+    width: 43px;
+    height: 43px;
     border-radius: 50%;
+    border: 1px solid #d6d6d6;
   }
 `;

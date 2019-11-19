@@ -39,76 +39,81 @@ class AppointmentController {
   }
 
   async store(req, res) {
-    const schema = Yup.object().shape({
-      provider_id: Yup.number().required(),
-      date: Yup.date().required(),
-    });
+    try {
+      const schema = Yup.object().shape({
+        provider_id: Yup.number().required(),
+        date: Yup.date().required(),
+      });
 
-    if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Validation fails' });
-    }
+      if (!(await schema.isValid(req.body))) {
+        return res.status(400).json({ error: 'Validation fails' });
+      }
 
-    const { provider_id, date } = req.body;
+      const { provider_id, date } = req.body;
 
-    // Check id provider_id is a provider
-    const isProvider = await User.findOne({
-      where: { id: provider_id, provider: true },
-    });
+      // Check id provider_id is a provider
+      const isProvider = await User.findOne({
+        where: { id: provider_id, provider: true },
+      });
 
-    if (!isProvider) {
-      return res
-        .status(401)
-        .json({ error: 'You can only create appointments with providers' });
-    }
+      if (!isProvider) {
+        return res
+          .status(401)
+          .json({ error: 'You can only create appointments with providers' });
+      }
 
-    // Check if user is same than provider
-    // if (req.userId === provider_id) {
-    //   return res
-    //     .status(401)
-    //     .json({ error: 'User cannot be the same than Provider' });
-    // }
+      // Check if user is same than provider
+      // if (req.userId === provider_id) {
+      //   return res
+      //     .status(401)
+      //     .json({ error: 'User cannot be the same than Provider' });
+      // }
 
-    // Take start hour
-    const hourStart = startOfHour(parseISO(date));
+      // Take start hour
+      const hourStart = startOfHour(parseISO(date));
 
-    // Check if hour is less than current hour
-    if (isBefore(hourStart, new Date())) {
-      return res.status(400).json({ error: 'Past dates are not permitted' });
-    }
+      // Check if hour is less than current hour
+      if (isBefore(hourStart, new Date())) {
+        return res.status(400).json({ error: 'Past dates are not permitted' });
+      }
 
-    // Check if it already has a scheduled appointments
-    const checkAvailability = await Appointments.findOne({
-      where: {
+      // Check if it already has a scheduled appointments
+      const checkAvailability = await Appointments.findOne({
+        where: {
+          provider_id,
+          canceled_at: null,
+          date: hourStart,
+        },
+      });
+
+      if (checkAvailability) {
+        return res
+          .status(400)
+          .json({ error: 'Appointment date is not available' });
+      }
+
+      const appointments = await Appointments.create({
+        user_id: req.userId,
         provider_id,
-        canceled_at: null,
         date: hourStart,
-      },
-    });
+      });
 
-    if (checkAvailability) {
-      return res
-        .status(400)
-        .json({ error: 'Appointment date is not available' });
+      // Notify service provider after creation
+      const user = await User.findByPk(req.userId);
+      const formattedDate = format(
+        hourStart,
+        "'dia' dd 'de' MMMM ', às' H:mm'h ",
+        { locale: pt }
+      );
+      await Notification.create({
+        content: `Novo agendamento de ${user.name} para ${formattedDate}`,
+        user: provider_id,
+      });
+      return res.json(appointments);
+    } catch (err) {
+      console.log(err);
+      return res.status(500).send();
     }
-
-    const appointments = await Appointments.create({
-      user_id: req.userId,
-      provider_id,
-      date: hourStart,
-    });
-
-    // Notify service provider after creation
-    const user = await User.findByPk(req.userId);
-    const formattedDate = format(
-      hourStart,
-      "'dia' dd 'de' MMMM ', às' H:mm'h ",
-      { locale: pt }
-    );
-    await Notification.create({
-      content: `Novo agendamento de ${user.name} para ${formattedDate}`,
-      user: provider_id,
-    });
-    return res.json(appointments);
   }
 
   async delete(req, res) {
