@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  max-width: 900px;
+  max-width: 600px;
   margin: 50px auto;
   display: flex;
   flex-direction: column;
@@ -26,7 +26,7 @@ export const Container = styled.div`
 
   ul {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 15px;
     margin-top: 30px;
   }
@@ -37,17 +37,17 @@ export const Time = styled.li`
   color: #000;
   padding: 20px;
   border-radius: 4px;
-  opacity: ${props => (props.past ? 0.6 : 1)};
+  opacity: ${props => (props.past || props.available ? 0.6 : 1)};
 
   strong {
-    display: block;
+    display: flex;
     color: ${props => (props.available ? '#999' : '#793586')};
     font-size: 20px;
     font-weight: normal;
   }
 
   span {
-    display: block;
+    display: flex;
     margin-top: 3px;
     color: ${props => (props.available ? '#999' : '#666')};
   }

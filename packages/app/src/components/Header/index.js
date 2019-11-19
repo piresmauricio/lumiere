@@ -14,7 +14,7 @@ export default function Header() {
       <Content>
         <nav>
           <img src={logo} alt="Ema" />
-          <Link to="/dashboard">WORKSPACE</Link>
+          <Link to="/dashboard">DASHBOARD DE HORÁRIOS</Link>
         </nav>
         <aside>
           <Notifications />
