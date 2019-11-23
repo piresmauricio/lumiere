@@ -1,4 +1,9 @@
-import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
+import {
+  MdChevronLeft,
+  MdChevronRight,
+  MdViewList,
+  MdViewModule,
+} from 'react-icons/md';
 import React, { useState, useMemo, useEffect } from 'react';
 import {
   format,
@@ -15,7 +20,7 @@ import { utcToZonedTime } from 'date-fns-tz';
 import pt from 'date-fns/locale/pt';
 
 import api from '~/service/api';
-import { Container, Time } from './styles';
+import { Container, Time, OrderView } from './styles';
 
 const range = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22];
 
@@ -76,6 +81,16 @@ export default function Dashboard() {
           <MdChevronRight size={36} color="#FFF" />
         </button>
       </header>
+
+      <div>
+        <OrderView type="button" orderView="list">
+          <MdViewList size={24} color="#FFF" />
+        </OrderView>
+
+        <OrderView type="button" orderView="dashboard">
+          <MdViewModule size={24} color="#FFF" />
+        </OrderView>
+      </div>
 
       <ul>
         {schedule.map(time => (

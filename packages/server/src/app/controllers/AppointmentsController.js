@@ -106,7 +106,7 @@ class AppointmentController {
         { locale: pt }
       );
       await Notification.create({
-        content: `Novo agendamento de ${user.name} para ${formattedDate}`,
+        content: `${user.name} reservou horário para ${formattedDate}`,
         user: provider_id,
       });
       return res.json(appointments);
