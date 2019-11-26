@@ -15,14 +15,17 @@ import {
   isBefore,
   parseISO,
 } from 'date-fns';
-
 import { utcToZonedTime } from 'date-fns-tz';
 import pt from 'date-fns/locale/pt';
 
 import api from '~/service/api';
-import { Container, Time, OrderView } from './styles';
+import { Container, Time, ModeDashView, ModeListView } from './styles';
 
 const range = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22];
+
+if (localStorage.getItem('@gobarber/modeview', '')) {
+  localStorage.setItem('@gobarber/modeview', 'dashboard');
+}
 
 export default function Dashboard() {
   const [schedule, setSchedule] = useState([]);
@@ -32,6 +35,8 @@ export default function Dashboard() {
     () => format(date, "d 'de' MMMM", { locale: pt }),
     [date]
   );
+
+  let view = localStorage.getItem('@gobarber/modeview');
 
   useEffect(() => {
     async function loadSchedule() {
@@ -70,6 +75,11 @@ export default function Dashboard() {
     setDate(addDays(date, 1));
   }
 
+  function handleModeView(modeview) {
+    localStorage.setItem('@gobarber/modeview', modeview);
+    view = modeview;
+  }
+
   return (
     <Container>
       <header>
@@ -83,13 +93,21 @@ export default function Dashboard() {
       </header>
 
       <div>
-        <OrderView type="button" orderView="list">
+        <ModeListView
+          type="button"
+          view={view}
+          onClick={() => handleModeView('list')}
+        >
           <MdViewList size={24} color="#FFF" />
-        </OrderView>
+        </ModeListView>
 
-        <OrderView type="button" orderView="dashboard">
+        <ModeDashView
+          type="button"
+          view={view}
+          onClick={() => handleModeView('dashboard')}
+        >
           <MdViewModule size={24} color="#FFF" />
-        </OrderView>
+        </ModeDashView>
       </div>
 
       <ul>

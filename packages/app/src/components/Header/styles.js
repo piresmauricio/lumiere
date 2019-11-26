@@ -55,7 +55,7 @@ export const Profile = styled.div`
     a {
       display: block;
       margin-top: 2px;
-      font-size: 12px;
+      font-size: 11px;
       color: #999;
     }
   }

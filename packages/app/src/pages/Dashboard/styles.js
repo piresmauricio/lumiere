@@ -58,9 +58,18 @@ export const Time = styled.li`
   }
 `;
 
-export const OrderView = styled.div`
+export const ModeListView = styled.button`
   background: none;
   border: none;
   padding: 0 3px;
-  opacity: ${props => (props.orderView === 'list' ? 0.6 : 1)};
+  cursor: pointer;
+  opacity: ${props => (props.view === 'list' ? 1 : 0.3)};
+`;
+
+export const ModeDashView = styled.button`
+  background: none;
+  border: none;
+  padding: 0 3px;
+  cursor: pointer;
+  opacity: ${props => (props.view === 'dashboard' ? 1 : 0.3)};
 `;

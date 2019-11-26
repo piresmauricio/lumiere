@@ -7,7 +7,6 @@ import * as Yup from 'yup';
 import logo from '~/assets/logo-ema-soft4.png';
 import { signUpRequest } from '~/store/modules/auth/actions';
 
-// Validações Yup
 const schema = Yup.object().shape({
   name: Yup.string().required('O nome é obrigatório'),
   email: Yup.string()
