@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { MdNotifications } from 'react-icons/md';
 import { parseISO, formatDistance } from 'date-fns';
 import pt from 'date-fns/locale/pt';
+import Tooltip from '@material-ui/core/Tooltip';
 import api from '~/service/api';
 
 import {
@@ -56,9 +57,11 @@ export default function Notifications() {
 
   return (
     <Container>
-      <Badge onClick={handleToggleVisible} hasUnread={hasUnread}>
-        <MdNotifications color="#793586" size={20} />
-      </Badge>
+      <Tooltip title="Notifications" placement="left-start">
+        <Badge onClick={handleToggleVisible} hasUnread={hasUnread}>
+          <MdNotifications color="#793586" size={20} />
+        </Badge>
+      </Tooltip>
 
       <NotificationList visible={visible}>
         <Scroll>

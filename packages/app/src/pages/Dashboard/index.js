@@ -18,19 +18,17 @@ import {
 import { utcToZonedTime } from 'date-fns-tz';
 import pt from 'date-fns/locale/pt';
 
+import Tooltip from '@material-ui/core/Tooltip';
+
 import api from '~/service/api';
-import { Container, Time, ModeDashView, ModeListView } from './styles';
+import { Container, Time, ModeDashView, ModeListView, Scroll } from './styles';
 
 const range = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22];
-
-if (localStorage.getItem('@gobarber/modeview', '')) {
-  localStorage.setItem('@gobarber/modeview', 'dashboard');
-}
 
 export default function Dashboard() {
   const [schedule, setSchedule] = useState([]);
   const [date, setDate] = useState(new Date());
-  const [modeview, setModeview] = useState('dashboard');
+  const [modeview, setModeview] = useState('list');
 
   const dateFormatted = useMemo(
     () => format(date, "d 'de' MMMM", { locale: pt }),
@@ -91,38 +89,44 @@ export default function Dashboard() {
       </header>
 
       <div>
-        <ModeListView
-          type="button"
-          view={modeview}
-          onClick={() => setModeview('list')}
-        >
-          <MdViewList size={24} color="#FFF" />
-        </ModeListView>
+        <Tooltip title="Lista" placement="left-start">
+          <ModeListView
+            type="button"
+            view={modeview}
+            onClick={() => setModeview('list')}
+          >
+            <MdViewList size={24} color="#FFF" />
+          </ModeListView>
+        </Tooltip>
 
-        <ModeDashView
-          type="button"
-          view={modeview}
-          onClick={() => setModeview('dashboard')}
-        >
-          <MdViewModule size={24} color="#FFF" />
-        </ModeDashView>
+        <Tooltip title="Dashboard" placement="right-start">
+          <ModeDashView
+            type="button"
+            view={modeview}
+            onClick={() => setModeview('dashboard')}
+          >
+            <MdViewModule size={24} color="#FFF" />
+          </ModeDashView>
+        </Tooltip>
       </div>
 
-      <ul>
-        {schedule.map(time => (
-          <Time
-            key={time.time}
-            past={time.past}
-            available={!time.appointment}
-            view={modeview}
-          >
-            <strong>{time.time}</strong>
-            <span>
-              {time.appointment ? time.appointment.user.name : 'Disponível'}
-            </span>
-          </Time>
-        ))}
-      </ul>
+      <Scroll>
+        <ul>
+          {schedule.map(time => (
+            <Time
+              key={time.time}
+              past={time.past}
+              available={!time.appointment}
+              view={modeview}
+            >
+              <strong>{time.time}</strong>
+              <span>
+                {time.appointment ? time.appointment.user.name : 'Disponível'}
+              </span>
+            </Time>
+          ))}
+        </ul>
+      </Scroll>
     </Container>
   );
 }

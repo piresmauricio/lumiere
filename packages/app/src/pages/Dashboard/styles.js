@@ -1,36 +1,47 @@
 import styled from 'styled-components';
 
+import PerfectScrollbar from 'react-perfect-scrollbar';
+
 export const Container = styled.div`
-  max-width: 600px;
-  margin: 35px auto;
   display: flex;
+  align-self: center;
+
   flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+  padding: 10px;
+
+  max-height: calc(100% - 130px);
 
   header {
     display: flex;
     align-self: center;
     align-items: center;
+    text-align: center;
 
+    margin-top: 15px;
     button {
-      background: none;
-      border: 0;
-      display: flex;
-      align-items: center;
+      all: unset; /* Zera o elemento */
+      max-height: 36px;
     }
 
     strong {
-      margin: 0 15px;
       font-size: 16px;
+      /* height: 100%; */
     }
   }
 
   ul {
+    width: 100%;
     display: grid;
-    /* grid-template-columns: repeat(3, 1fr); */
     grid-template-columns: ${props =>
-      props.view === 'dashboard' ? 'repeat(3, 1fr)' : 'repeat(1, 1fr)'};
+      props.view === 'dashboard'
+        ? 'repeat( auto-fit, minmax(150px, 1fr))'
+        : 'repeat(1, 1fr)'};
     grid-gap: 15px;
-    margin-top: 10px;
+    padding-right: 15px;
+    height: 100%;
+    overflow: auto;
   }
 
   div {
@@ -74,4 +85,8 @@ export const ModeDashView = styled.button`
   padding: 0 3px;
   cursor: pointer;
   opacity: ${props => (props.view === 'dashboard' ? 1 : 0.3)};
+`;
+
+export const Scroll = styled(PerfectScrollbar)`
+  border-radius: 4px;
 `;
