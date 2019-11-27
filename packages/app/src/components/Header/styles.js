@@ -1,13 +1,23 @@
 import styled from 'styled-components';
 
+import * as device from '~/styles/breakpoints';
+
 export const Container = styled.div`
+  width: 100%;
   background: #fff;
   padding: 0 30px;
+
+  @media (max-width: ${device.mobileL}) {
+    padding-left: 15px;
+  }
+
+  @media (max-width: ${device.mobileS}) {
+    padding-left: 7px;
+  }
 `;
 
 export const Content = styled.div`
   height: 64px;
-  /* max-width: 900px; */
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -57,6 +67,13 @@ export const Profile = styled.div`
       margin-top: 2px;
       font-size: 11px;
       color: #999;
+    }
+
+    @media (max-width: ${device.tablet}) {
+      strong,
+      a {
+        display: none;
+      }
     }
   }
 

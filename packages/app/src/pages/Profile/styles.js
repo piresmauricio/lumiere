@@ -1,11 +1,14 @@
 import styled from 'styled-components';
+import PerfectScrollbar from 'react-perfect-scrollbar';
 
 import { darken } from 'polished';
+import * as device from '~/styles/breakpoints';
 
 export const Container = styled.div`
   margin: 50px auto;
   width: 100%;
   max-width: 600px;
+  padding: 15px;
 
   form {
     display: flex;
@@ -82,4 +85,8 @@ export const Container = styled.div`
       background: ${darken(0.03, '#f64c75')};
     }
   }
+`;
+
+export const Scroll = styled(PerfectScrollbar)`
+  border-radius: 4px;
 `;

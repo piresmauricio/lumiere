@@ -13,8 +13,10 @@ export default function Header() {
     <Container>
       <Content>
         <nav>
-          <img src={logo} alt="Ema" />
-          <Link to="/dashboard">AGENDA</Link>
+          <Link to="/dashboard">
+            <img src={logo} alt="Ema" />
+          </Link>
+          <Link to="/dashboard">DASHBOARD</Link>
         </nav>
         <aside>
           <Notifications />

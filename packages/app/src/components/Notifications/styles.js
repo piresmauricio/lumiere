@@ -2,6 +2,8 @@ import styled, { css } from 'styled-components';
 import { lighten } from 'polished';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
+import * as device from '~/styles/breakpoints';
+
 export const Container = styled.div`
   position: relative;
   z-index: 1;
@@ -26,6 +28,10 @@ export const Badge = styled.button`
         border-radius: 50%;
       }
     `}
+
+    @media (max-width: ${device.mobileS}) {
+        display: none;
+    }
 `;
 
 export const NotificationList = styled.div`

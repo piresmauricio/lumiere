@@ -4,13 +4,11 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 export const Container = styled.div`
   display: flex;
   align-self: center;
-
   flex-direction: column;
   width: 100%;
   max-width: 600px;
-  padding: 10px;
-
-  max-height: calc(100% - 130px);
+  padding-left: 13px;
+  max-height: calc(100% - 100px);
 
   header {
     display: flex;
@@ -54,6 +52,7 @@ export const Time = styled.li`
   padding: 20px;
   border-radius: 4px;
   opacity: ${props => (props.past || props.available ? 0.6 : 1)};
+  cursor: pointer;
 
   strong {
     display: flex;
