@@ -6,6 +6,6 @@ export const Wrapper = styled.div`
 
   height: 100%;
   background: linear-gradient(-90deg, #a273ab, #793586);
-  overflow: hidden;
+  overflow: auto;
   color: #fff;
 `;

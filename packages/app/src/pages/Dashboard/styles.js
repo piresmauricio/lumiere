@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
 export const Container = styled.div`
@@ -18,16 +17,16 @@ export const Container = styled.div`
     align-self: center;
     align-items: center;
     text-align: center;
-
     margin-top: 15px;
+
     button {
       all: unset; /* Zera o elemento */
       max-height: 36px;
+      cursor: pointer;
     }
 
     strong {
       font-size: 16px;
-      /* height: 100%; */
     }
   }
 
@@ -41,7 +40,6 @@ export const Container = styled.div`
     grid-gap: 15px;
     padding-right: 15px;
     height: 100%;
-    overflow: auto;
   }
 
   div {
@@ -83,6 +81,7 @@ export const ModeDashView = styled.button`
   background: none;
   border: none;
   padding: 0 3px;
+  margin-right: 10px;
   cursor: pointer;
   opacity: ${props => (props.view === 'dashboard' ? 1 : 0.3)};
 `;

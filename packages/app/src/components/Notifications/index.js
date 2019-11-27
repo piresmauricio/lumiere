@@ -57,11 +57,9 @@ export default function Notifications() {
 
   return (
     <Container>
-      <Tooltip title="Notifications" placement="left-start">
-        <Badge onClick={handleToggleVisible} hasUnread={hasUnread}>
-          <MdNotifications color="#793586" size={20} />
-        </Badge>
-      </Tooltip>
+      <Badge onClick={handleToggleVisible} hasUnread={hasUnread}>
+        <MdNotifications color="#793586" size={20} />
+      </Badge>
 
       <NotificationList visible={visible}>
         <Scroll>
