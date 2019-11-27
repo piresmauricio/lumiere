@@ -30,13 +30,12 @@ if (localStorage.getItem('@gobarber/modeview', '')) {
 export default function Dashboard() {
   const [schedule, setSchedule] = useState([]);
   const [date, setDate] = useState(new Date());
+  const [modeview, setModeview] = useState('dashboard');
 
   const dateFormatted = useMemo(
     () => format(date, "d 'de' MMMM", { locale: pt }),
     [date]
   );
-
-  let view = localStorage.getItem('@gobarber/modeview');
 
   useEffect(() => {
     async function loadSchedule() {
@@ -75,13 +74,12 @@ export default function Dashboard() {
     setDate(addDays(date, 1));
   }
 
-  function handleModeView(modeview) {
-    localStorage.setItem('@gobarber/modeview', modeview);
-    view = modeview;
-  }
+  useEffect(() => {
+    setModeview(modeview);
+  }, [modeview]);
 
   return (
-    <Container>
+    <Container view={modeview}>
       <header>
         <button type="button" onClick={handlePrevDay}>
           <MdChevronLeft size={36} color="#FFF" />
@@ -95,16 +93,16 @@ export default function Dashboard() {
       <div>
         <ModeListView
           type="button"
-          view={view}
-          onClick={() => handleModeView('list')}
+          view={modeview}
+          onClick={() => setModeview('list')}
         >
           <MdViewList size={24} color="#FFF" />
         </ModeListView>
 
         <ModeDashView
           type="button"
-          view={view}
-          onClick={() => handleModeView('dashboard')}
+          view={modeview}
+          onClick={() => setModeview('dashboard')}
         >
           <MdViewModule size={24} color="#FFF" />
         </ModeDashView>
@@ -112,7 +110,12 @@ export default function Dashboard() {
 
       <ul>
         {schedule.map(time => (
-          <Time key={time.time} past={time.past} available={!time.appointment}>
+          <Time
+            key={time.time}
+            past={time.past}
+            available={!time.appointment}
+            view={modeview}
+          >
             <strong>{time.time}</strong>
             <span>
               {time.appointment ? time.appointment.user.name : 'Disponível'}
