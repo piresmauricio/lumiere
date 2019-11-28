@@ -3,6 +3,8 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 
 import * as device from '~/styles/breakpoints';
 
+// import { status } from '~/constants';
+
 export const Container = styled.div`
   display: flex;
   align-self: center;
@@ -54,7 +56,6 @@ export const Container = styled.div`
 
     > span {
       font-size: 12px;
-      padding-left: 250px;
 
       @media (max-width: ${device.mobileL}) {
         padding-left: 163px;
@@ -75,17 +76,56 @@ export const Container = styled.div`
   }
 `;
 
-export const Card = styled.li`
-  background: #fff;
+export const CardList = styled.li`
+  background: ${props => (props.status ? '#793586' : '#fff')};
   color: #000;
   padding: 20px;
   border-radius: 4px;
-  opacity: ${props => (props.status || props.past ? 0.6 : 1)};
+  border: ${props => (props.past ? 'none' : '1px solid #eee')};
+  opacity: ${props => (props.past ? 0.6 : 1)};
+  cursor: pointer;
+  display: flex;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding: 0;
+
+    strong {
+      display: flex;
+      color: ${props => (props.status ? '#eee' : '#999')};
+      font-size: 20px;
+      font-weight: normal;
+    }
+
+    > span {
+      margin-top: 3px;
+      color: ${props => (props.status ? '#eee' : '#999')};
+    }
+  }
+
+  span {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    font-size: 20px;
+    color: ${props => (props.status ? '#eee' : '#999')};
+  }
+`;
+
+export const CardDashboard = styled.li`
+  background: ${props => (props.status ? '#793586' : '#fff')};
+  color: #000;
+  padding: 20px;
+  border-radius: 4px;
+  border: ${props => (props.past ? 'none' : '1px solid #eee')};
+  opacity: ${props => (props.past ? 0.6 : 1)};
   cursor: pointer;
 
   strong {
     display: flex;
-    color: ${props => (props.status ? '#999' : '#793586')};
+    color: ${props => (props.status ? '#eee' : '#999')};
     font-size: 20px;
     font-weight: normal;
   }
@@ -93,7 +133,7 @@ export const Card = styled.li`
   span {
     display: flex;
     margin-top: 3px;
-    color: ${props => (props.status ? '#999' : '#666')};
+    color: ${props => (props.status ? '#eee' : '#999')};
   }
 `;
 

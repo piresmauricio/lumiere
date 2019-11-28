@@ -14,10 +14,7 @@ class Appointments extends Model {
           },
         },
         status: {
-          type: Sequelize.VIRTUAL,
-          get() {
-            return 1;
-          },
+          type: Sequelize.NUMBER,
         },
       },
       { sequelize }

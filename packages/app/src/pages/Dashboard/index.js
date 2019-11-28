@@ -21,11 +21,18 @@ import {
 } from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
 import pt from 'date-fns/locale/pt';
-
 import Tooltip from '@material-ui/core/Tooltip';
 
 import api from '~/service/api';
-import { Container, Card, ModeDashView, ModeListView, Scroll } from './styles';
+import {
+  Container,
+  CardDashboard,
+  CardList,
+  ModeDashView,
+  ModeListView,
+  Scroll,
+} from './styles';
+import { status } from '~/constants';
 
 const range = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22];
 
@@ -34,7 +41,7 @@ export default function Dashboard() {
   const [date, setDate] = useState(new Date());
   const [modeview, setModeview] = useState('list');
 
-  // Abstrair
+  // TODO - Abstrair
   let nameDay = '';
 
   switch (getISODay(date)) {
@@ -155,19 +162,45 @@ export default function Dashboard() {
 
       <Scroll>
         <ul>
-          {schedule.map(time => (
-            <Card
-              key={time.time}
-              past={time.past}
-              status={!time.appointment}
-              view={modeview}
-            >
-              <strong>{time.time}</strong>
-              <span>
-                {time.appointment ? time.appointment.user.name : 'Disponível'}
-              </span>
-            </Card>
-          ))}
+          {modeview === 'dashboard'
+            ? schedule.map(time => (
+                <CardDashboard
+                  key={time.time}
+                  past={time.past}
+                  status={time.appointment && time.appointment.status}
+                  view={modeview}
+                >
+                  <strong>{time.time}</strong>
+                  <span>
+                    {time.appointment ? time.appointment.user.name : '---'}
+                  </span>
+                  <span>
+                    {time.appointment
+                      ? status[time.appointment.status]
+                      : 'Disponível'}
+                  </span>
+                </CardDashboard>
+              ))
+            : schedule.map(time => (
+                <CardList
+                  key={time.time}
+                  past={time.past}
+                  status={time.appointment && time.appointment.status}
+                  view={modeview}
+                >
+                  <span>
+                    {time.appointment ? time.appointment.user.name : '---'}
+                  </span>
+                  <div>
+                    <strong>{time.time}</strong>
+                    <span>
+                      {time.appointment
+                        ? status[time.appointment.status]
+                        : 'Disponível'}
+                    </span>
+                  </div>
+                </CardList>
+              ))}
         </ul>
       </Scroll>
     </Container>
