@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
+import * as device from '~/styles/breakpoints';
+
 export const Container = styled.div`
   display: flex;
   align-self: center;
@@ -25,6 +27,7 @@ export const Container = styled.div`
 
     strong {
       font-size: 16px;
+      min-width: 120px;
     }
   }
 
@@ -42,7 +45,33 @@ export const Container = styled.div`
 
   div {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    padding-bottom: 5px;
+
+    > div {
+      padding-bottom: 0;
+    }
+
+    > span {
+      font-size: 12px;
+      padding-left: 250px;
+
+      @media (max-width: ${device.mobileL}) {
+        padding-left: 163px;
+      }
+      @media (max-width: ${device.mobileM}) {
+        padding-left: 138px;
+      }
+      @media (max-width: ${device.mobileS}) {
+        padding-left: 110px;
+      }
+    }
+
+    > span,
+    button {
+      display: flex;
+      align-items: center;
+    }
   }
 `;
 

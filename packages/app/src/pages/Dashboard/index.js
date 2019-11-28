@@ -13,6 +13,10 @@ import {
   setMinutes,
   setSeconds,
   isBefore,
+  isToday,
+  isTomorrow,
+  isYesterday,
+  getISODay,
   parseISO,
 } from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
@@ -29,6 +33,42 @@ export default function Dashboard() {
   const [schedule, setSchedule] = useState([]);
   const [date, setDate] = useState(new Date());
   const [modeview, setModeview] = useState('list');
+
+  // Abstrair
+  let nameDay = '';
+
+  switch (getISODay(date)) {
+    case 1:
+      nameDay = 'Segunda-feira';
+      break;
+    case 2:
+      nameDay = 'Terça-feira';
+      break;
+    case 3:
+      nameDay = 'Quarta-feira';
+      break;
+    case 4:
+      nameDay = 'Quinta-feira';
+      break;
+    case 5:
+      nameDay = 'Sexta-feira';
+      break;
+    case 6:
+      nameDay = 'Sábado';
+      break;
+    case 7:
+      nameDay = 'Domingo';
+      break;
+    default:
+  }
+
+  if (isToday(date)) {
+    nameDay = 'Hoje';
+  } else if (isTomorrow(date)) {
+    nameDay = 'Amanhã';
+  } else if (isYesterday(date)) {
+    nameDay = 'Ontem';
+  }
 
   const dateFormatted = useMemo(
     () => format(date, "d 'de' MMMM", { locale: pt }),
@@ -82,32 +122,35 @@ export default function Dashboard() {
         <button type="button" onClick={handlePrevDay}>
           <MdChevronLeft size={36} color="#FFF" />
         </button>
-        <strong>{dateFormatted}</strong>
+        <strong>{nameDay}</strong>
         <button type="button" onClick={handleNextDay}>
           <MdChevronRight size={36} color="#FFF" />
         </button>
       </header>
 
       <div>
-        <Tooltip title="Lista" placement="left-start">
-          <ModeListView
-            type="button"
-            view={modeview}
-            onClick={() => setModeview('list')}
-          >
-            <MdViewList size={24} color="#FFF" />
-          </ModeListView>
-        </Tooltip>
+        <span>{dateFormatted}</span>
+        <div>
+          <Tooltip title="Lista" placement="left-start">
+            <ModeListView
+              type="button"
+              view={modeview}
+              onClick={() => setModeview('list')}
+            >
+              <MdViewList size={24} color="#FFF" />
+            </ModeListView>
+          </Tooltip>
 
-        <Tooltip title="Dashboard" placement="right-start">
-          <ModeDashView
-            type="button"
-            view={modeview}
-            onClick={() => setModeview('dashboard')}
-          >
-            <MdViewModule size={24} color="#FFF" />
-          </ModeDashView>
-        </Tooltip>
+          <Tooltip title="Dashboard" placement="right-start">
+            <ModeDashView
+              type="button"
+              view={modeview}
+              onClick={() => setModeview('dashboard')}
+            >
+              <MdViewModule size={24} color="#FFF" />
+            </ModeDashView>
+          </Tooltip>
+        </div>
       </div>
 
       <Scroll>

@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
 import { darken } from 'polished';
-import * as device from '~/styles/breakpoints';
 
 export const Container = styled.div`
   margin: 50px auto;
