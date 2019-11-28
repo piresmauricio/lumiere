@@ -91,6 +91,7 @@ export const CardList = styled.li`
     flex-direction: column;
     align-items: left;
     padding: 0;
+    max-width: 100px;
 
     strong {
       display: flex;
@@ -101,6 +102,7 @@ export const CardList = styled.li`
 
     > span {
       margin-top: 3px;
+      padding: 0;
       color: ${props => (props.status ? '#eee' : '#999')};
     }
   }
@@ -109,8 +111,19 @@ export const CardList = styled.li`
     display: flex;
     flex: 1;
     align-items: center;
+
     font-size: 20px;
+    padding-left: 15px;
     color: ${props => (props.status ? '#eee' : '#999')};
+  }
+
+  img {
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+    border: 1px solid #d6d6d6;
+
+    display: ${props => !props.status && 'none'};
   }
 `;
 

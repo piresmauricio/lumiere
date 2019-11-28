@@ -171,9 +171,7 @@ export default function Dashboard() {
                   view={modeview}
                 >
                   <strong>{time.time}</strong>
-                  <span>
-                    {time.appointment ? time.appointment.user.name : '---'}
-                  </span>
+                  <span>{time.appointment && time.appointment.user.name}</span>
                   <span>
                     {time.appointment
                       ? status[time.appointment.status]
@@ -188,9 +186,12 @@ export default function Dashboard() {
                   status={time.appointment && time.appointment.status}
                   view={modeview}
                 >
-                  <span>
-                    {time.appointment ? time.appointment.user.name : '---'}
-                  </span>
+                  <img
+                    src="https://api.adorable.io/avatars/50/abott@adorable.png"
+                    alt="Avatar"
+                  />
+
+                  <span>{time.appointment && time.appointment.user.name}</span>
                   <div>
                     <strong>{time.time}</strong>
                     <span>
