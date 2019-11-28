@@ -16,7 +16,7 @@ class AppointmentController {
     const appointments = await Appointments.findAll({
       where: { user_id: req.userId, canceled_at: null },
       order: ['date'],
-      attributes: ['id', 'date', 'past', 'cancellable'],
+      attributes: ['id', 'date', 'past', 'status'],
       limit: 20,
       offset: (page - 1) * 20,
       include: [
@@ -63,11 +63,11 @@ class AppointmentController {
       }
 
       // Check if user is same than provider
-      // if (req.userId === provider_id) {
-      //   return res
-      //     .status(401)
-      //     .json({ error: 'User cannot be the same than Provider' });
-      // }
+      if (req.userId === provider_id) {
+        return res
+          .status(401)
+          .json({ error: 'User cannot be the same than Provider' });
+      }
 
       // Take start hour
       const hourStart = startOfHour(parseISO(date));
@@ -96,6 +96,7 @@ class AppointmentController {
         user_id: req.userId,
         provider_id,
         date: hourStart,
+        status: 1,
       });
 
       // Notify service provider after creation
@@ -109,9 +110,10 @@ class AppointmentController {
         content: `${user.name} reservou horário para ${formattedDate}`,
         user: provider_id,
       });
+
       return res.json(appointments);
     } catch (err) {
-      return res.status(500).send();
+      return res.status(500).json(err);
     }
   }
 

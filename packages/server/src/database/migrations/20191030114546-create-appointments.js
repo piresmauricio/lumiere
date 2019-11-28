@@ -24,9 +24,9 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
       },
-      cancellable: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: true,
+      status: {
+        type: Sequelize.INTEGER,
+        defaultValue: 1,
         allowNull: false,
       },
       canceled_at: {

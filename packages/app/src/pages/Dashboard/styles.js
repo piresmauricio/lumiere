@@ -75,17 +75,17 @@ export const Container = styled.div`
   }
 `;
 
-export const Time = styled.li`
+export const Card = styled.li`
   background: #fff;
   color: #000;
   padding: 20px;
   border-radius: 4px;
-  opacity: ${props => (props.past || props.available ? 0.6 : 1)};
+  opacity: ${props => (props.status || props.past ? 0.6 : 1)};
   cursor: pointer;
 
   strong {
     display: flex;
-    color: ${props => (props.available ? '#999' : '#793586')};
+    color: ${props => (props.status ? '#999' : '#793586')};
     font-size: 20px;
     font-weight: normal;
   }
@@ -93,7 +93,7 @@ export const Time = styled.li`
   span {
     display: flex;
     margin-top: 3px;
-    color: ${props => (props.available ? '#999' : '#666')};
+    color: ${props => (props.status ? '#999' : '#666')};
   }
 `;
 

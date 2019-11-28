@@ -25,7 +25,7 @@ import pt from 'date-fns/locale/pt';
 import Tooltip from '@material-ui/core/Tooltip';
 
 import api from '~/service/api';
-import { Container, Time, ModeDashView, ModeListView, Scroll } from './styles';
+import { Container, Card, ModeDashView, ModeListView, Scroll } from './styles';
 
 const range = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22];
 
@@ -156,17 +156,17 @@ export default function Dashboard() {
       <Scroll>
         <ul>
           {schedule.map(time => (
-            <Time
+            <Card
               key={time.time}
               past={time.past}
-              available={!time.appointment}
+              status={!time.appointment}
               view={modeview}
             >
               <strong>{time.time}</strong>
               <span>
                 {time.appointment ? time.appointment.user.name : 'Disponível'}
               </span>
-            </Time>
+            </Card>
           ))}
         </ul>
       </Scroll>
