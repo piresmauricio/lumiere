@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Container } from './styles';
-import { status } from '~/constants';
+import { appointmentStatus } from '~/constants';
 
 export default function Dashboard({ time, ...props }) {
   return (
@@ -9,7 +9,9 @@ export default function Dashboard({ time, ...props }) {
       <strong>{time.time}</strong>
       <span>{time.appointment && time.appointment.user.name}</span>
       <span>
-        {time.appointment ? status[time.appointment.status] : 'Disponível'}
+        {time.appointment
+          ? appointmentStatus[time.appointment.status]
+          : 'Disponível'}
       </span>
     </Container>
   );

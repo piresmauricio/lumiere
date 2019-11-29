@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Container } from './styles';
-import { status } from '~/constants';
+import { appointmentStatus } from '~/constants';
 
 export default function List({ time, ...props }) {
   return (
@@ -15,7 +15,9 @@ export default function List({ time, ...props }) {
       <div>
         <strong>{time.time}</strong>
         <span>
-          {time.appointment ? status[time.appointment.status] : 'Disponível'}
+          {time.appointment
+            ? appointmentStatus[time.appointment.status]
+            : 'Disponível'}
         </span>
       </div>
     </Container>

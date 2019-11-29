@@ -24,24 +24,11 @@ import pt from 'date-fns/locale/pt';
 import Tooltip from '@material-ui/core/Tooltip';
 
 import api from '~/service/api';
+import { range, weekDay } from '~/constants';
 import { Container, ModeDashView, ModeListView, Scroll } from './styles';
-
-import { status } from '~/constants';
 import Card from '~/components/Card';
 import CardDashboard from '~/components/Card/Dashboard';
 import CardList from '~/components/Card/List';
-
-const range = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22];
-const WeekDay = [
-  '',
-  'Segunda-feira',
-  'Terça-feira',
-  'Quarta-feira',
-  'Quinta-feira',
-  'Sexta-feira',
-  'Sábado',
-  'Domingo',
-];
 
 export default function Dashboard() {
   const [schedule, setSchedule] = useState([]);
@@ -49,11 +36,11 @@ export default function Dashboard() {
   const [modeview, setModeview] = useState('list');
 
   if (isToday(date)) {
-    WeekDay[getISODay(date)] = 'Hoje';
+    weekDay[getISODay(date)] = 'Hoje';
   } else if (isTomorrow(date)) {
-    WeekDay[getISODay(date)] = 'Amanhã';
+    weekDay[getISODay(date)] = 'Amanhã';
   } else if (isYesterday(date)) {
-    WeekDay[getISODay(date)] = 'Ontem';
+    weekDay[getISODay(date)] = 'Ontem';
   }
 
   const dateFormatted = useMemo(
@@ -108,7 +95,7 @@ export default function Dashboard() {
         <button type="button" onClick={handlePrevDay}>
           <MdChevronLeft size={36} color="#FFF" />
         </button>
-        <strong>{WeekDay[getISODay(date)]}</strong>
+        <strong>{weekDay[getISODay(date)]}</strong>
         <button type="button" onClick={handleNextDay}>
           <MdChevronRight size={36} color="#FFF" />
         </button>
