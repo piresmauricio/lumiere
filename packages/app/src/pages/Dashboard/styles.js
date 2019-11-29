@@ -51,26 +51,6 @@ export const Container = styled.div`
     > div {
       padding-bottom: 0;
     }
-
-    > span {
-      font-size: 12px;
-
-      @media (max-width: ${device.mobileL}) {
-        padding-left: 163px;
-      }
-      @media (max-width: ${device.mobileM}) {
-        padding-left: 138px;
-      }
-      @media (max-width: ${device.mobileS}) {
-        padding-left: 110px;
-      }
-    }
-
-    > span,
-    button {
-      display: flex;
-      align-items: center;
-    }
   }
 `;
 

@@ -33,7 +33,7 @@ import CardList from '~/components/Card/List';
 export default function Dashboard() {
   const [schedule, setSchedule] = useState([]);
   const [date, setDate] = useState(new Date());
-  const [modeview, setModeview] = useState('list');
+  const [modeview, setModeview] = useState('dashboard');
 
   if (isToday(date)) {
     weekDay[getISODay(date)] = 'Hoje';

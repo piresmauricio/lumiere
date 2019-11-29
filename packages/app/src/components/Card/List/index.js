@@ -7,7 +7,10 @@ export default function List({ time, ...props }) {
   return (
     <Container {...props}>
       <img
-        src="https://api.adorable.io/avatars/50/abott@adorable.png"
+        src={
+          (time.appointment && time.appointment.user.avatar.url) ||
+          'https://api.adorable.io/avatars/50/abott@adorable.png'
+        }
         alt="Avatar"
       />
 

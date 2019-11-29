@@ -20,6 +20,7 @@ export const Container = styled.li`
     > span {
       margin-top: 3px;
       padding: 0;
+      font-size: 12px;
       color: ${props => (props.status ? '#eee' : '#999')};
     }
   }
@@ -28,18 +29,16 @@ export const Container = styled.li`
     display: flex;
     flex: 1;
     align-items: center;
-
-    font-size: 20px;
-    padding-left: 15px;
+    font-size: 16px;
+    padding: 0 10px;
     color: ${props => (props.status ? '#eee' : '#999')};
   }
 
   img {
+    display: ${props => !props.status && 'none'};
+    align-self: center;
     width: 43px;
     height: 43px;
     border-radius: 50%;
-    border: 1px solid #d6d6d6;
-
-    display: ${props => !props.status && 'none'};
   }
 `;
