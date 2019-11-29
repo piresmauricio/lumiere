@@ -3,8 +3,6 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 
 import * as device from '~/styles/breakpoints';
 
-// import { status } from '~/constants';
-
 export const Container = styled.div`
   display: flex;
   align-self: center;
@@ -73,80 +71,6 @@ export const Container = styled.div`
       display: flex;
       align-items: center;
     }
-  }
-`;
-
-export const CardList = styled.li`
-  background: ${props => (props.status ? '#793586' : '#fff')};
-  color: #000;
-  padding: 20px;
-  border-radius: 4px;
-  border: ${props => (props.past ? 'none' : '1px solid #eee')};
-  opacity: ${props => (props.past ? 0.6 : 1)};
-  cursor: pointer;
-  display: flex;
-
-  div {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    padding: 0;
-    max-width: 100px;
-
-    strong {
-      display: flex;
-      color: ${props => (props.status ? '#eee' : '#999')};
-      font-size: 20px;
-      font-weight: normal;
-    }
-
-    > span {
-      margin-top: 3px;
-      padding: 0;
-      color: ${props => (props.status ? '#eee' : '#999')};
-    }
-  }
-
-  span {
-    display: flex;
-    flex: 1;
-    align-items: center;
-
-    font-size: 20px;
-    padding-left: 15px;
-    color: ${props => (props.status ? '#eee' : '#999')};
-  }
-
-  img {
-    width: 43px;
-    height: 43px;
-    border-radius: 50%;
-    border: 1px solid #d6d6d6;
-
-    display: ${props => !props.status && 'none'};
-  }
-`;
-
-export const CardDashboard = styled.li`
-  background: ${props => (props.status ? '#793586' : '#fff')};
-  color: #000;
-  padding: 20px;
-  border-radius: 4px;
-  border: ${props => (props.past ? 'none' : '1px solid #eee')};
-  opacity: ${props => (props.past ? 0.6 : 1)};
-  cursor: pointer;
-
-  strong {
-    display: flex;
-    color: ${props => (props.status ? '#eee' : '#999')};
-    font-size: 20px;
-    font-weight: normal;
-  }
-
-  span {
-    display: flex;
-    margin-top: 3px;
-    color: ${props => (props.status ? '#eee' : '#999')};
   }
 `;
 

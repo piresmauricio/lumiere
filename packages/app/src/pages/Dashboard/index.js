@@ -24,57 +24,36 @@ import pt from 'date-fns/locale/pt';
 import Tooltip from '@material-ui/core/Tooltip';
 
 import api from '~/service/api';
-import {
-  Container,
-  CardDashboard,
-  CardList,
-  ModeDashView,
-  ModeListView,
-  Scroll,
-} from './styles';
+import { Container, ModeDashView, ModeListView, Scroll } from './styles';
+
 import { status } from '~/constants';
+import Card from '~/components/Card';
+import CardDashboard from '~/components/Card/Dashboard';
+import CardList from '~/components/Card/List';
 
 const range = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22];
+const WeekDay = [
+  '',
+  'Segunda-feira',
+  'Terça-feira',
+  'Quarta-feira',
+  'Quinta-feira',
+  'Sexta-feira',
+  'Sábado',
+  'Domingo',
+];
 
 export default function Dashboard() {
   const [schedule, setSchedule] = useState([]);
   const [date, setDate] = useState(new Date());
   const [modeview, setModeview] = useState('list');
 
-  // TODO - Abstrair
-  let nameDay = '';
-
-  switch (getISODay(date)) {
-    case 1:
-      nameDay = 'Segunda-feira';
-      break;
-    case 2:
-      nameDay = 'Terça-feira';
-      break;
-    case 3:
-      nameDay = 'Quarta-feira';
-      break;
-    case 4:
-      nameDay = 'Quinta-feira';
-      break;
-    case 5:
-      nameDay = 'Sexta-feira';
-      break;
-    case 6:
-      nameDay = 'Sábado';
-      break;
-    case 7:
-      nameDay = 'Domingo';
-      break;
-    default:
-  }
-
   if (isToday(date)) {
-    nameDay = 'Hoje';
+    WeekDay[getISODay(date)] = 'Hoje';
   } else if (isTomorrow(date)) {
-    nameDay = 'Amanhã';
+    WeekDay[getISODay(date)] = 'Amanhã';
   } else if (isYesterday(date)) {
-    nameDay = 'Ontem';
+    WeekDay[getISODay(date)] = 'Ontem';
   }
 
   const dateFormatted = useMemo(
@@ -129,7 +108,7 @@ export default function Dashboard() {
         <button type="button" onClick={handlePrevDay}>
           <MdChevronLeft size={36} color="#FFF" />
         </button>
-        <strong>{nameDay}</strong>
+        <strong>{WeekDay[getISODay(date)]}</strong>
         <button type="button" onClick={handleNextDay}>
           <MdChevronRight size={36} color="#FFF" />
         </button>
@@ -162,46 +141,29 @@ export default function Dashboard() {
 
       <Scroll>
         <ul>
-          {modeview === 'dashboard'
-            ? schedule.map(time => (
+          {schedule.map(time => (
+            <Card
+              key={time.time}
+              border="1px solid #eee"
+              opacity={time.past ? 0.6 : 1}
+              background={
+                time.appointment &&
+                (time.appointment.status ? '#793586' : '#fff')
+              }
+            >
+              {modeview === 'dashboard' ? (
                 <CardDashboard
-                  key={time.time}
-                  past={time.past}
+                  time={time}
                   status={time.appointment && time.appointment.status}
-                  view={modeview}
-                >
-                  <strong>{time.time}</strong>
-                  <span>{time.appointment && time.appointment.user.name}</span>
-                  <span>
-                    {time.appointment
-                      ? status[time.appointment.status]
-                      : 'Disponível'}
-                  </span>
-                </CardDashboard>
-              ))
-            : schedule.map(time => (
+                />
+              ) : (
                 <CardList
-                  key={time.time}
-                  past={time.past}
+                  time={time}
                   status={time.appointment && time.appointment.status}
-                  view={modeview}
-                >
-                  <img
-                    src="https://api.adorable.io/avatars/50/abott@adorable.png"
-                    alt="Avatar"
-                  />
-
-                  <span>{time.appointment && time.appointment.user.name}</span>
-                  <div>
-                    <strong>{time.time}</strong>
-                    <span>
-                      {time.appointment
-                        ? status[time.appointment.status]
-                        : 'Disponível'}
-                    </span>
-                  </div>
-                </CardList>
-              ))}
+                />
+              )}
+            </Card>
+          ))}
         </ul>
       </Scroll>
     </Container>
