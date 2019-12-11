@@ -21,7 +21,9 @@ import {
 } from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
 import pt from 'date-fns/locale/pt';
-import Tooltip from '@material-ui/core/Tooltip';
+// import Tooltip from '@material-ui/core/Tooltip';
+import { Tooltip } from '@rmwc/tooltip';
+import '@rmwc/tooltip/tooltip.css';
 
 import api from '~/service/api';
 import { range, weekDay } from '~/constants';
@@ -104,7 +106,7 @@ export default function Dashboard() {
       <div>
         <span>{dateFormatted}</span>
         <div>
-          <Tooltip title="Lista" placement="left-start">
+          <Tooltip content="Lista" align="left" showArrow>
             <ModeListView
               type="button"
               view={modeview}
@@ -114,7 +116,7 @@ export default function Dashboard() {
             </ModeListView>
           </Tooltip>
 
-          <Tooltip title="Dashboard" placement="right-start">
+          <Tooltip content="Dashboard" align="right" showArrow>
             <ModeDashView
               type="button"
               view={modeview}
