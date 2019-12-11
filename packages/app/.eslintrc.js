@@ -37,6 +37,7 @@ module.exports = {
     'react/prop-types': 0,
     'import/no-unresolved': 'off',
     'prefer-object-spread': 'off',
+    'no-nested-ternary': 'off',
   },
   settings: {
     'import/resolver': {

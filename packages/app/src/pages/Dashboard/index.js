@@ -137,7 +137,13 @@ export default function Dashboard() {
               opacity={time.past ? 0.6 : 1}
               background={
                 time.appointment &&
-                (time.appointment.status ? '#793586' : '#fff')
+                (time.appointment.status === 1
+                  ? '#3EA1C8'
+                  : time.appointment.status === 2
+                  ? '#793586'
+                  : time.appointment.status === 3
+                  ? '#C63200'
+                  : '#fff')
               }
             >
               {modeview === 'dashboard' ? (

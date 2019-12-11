@@ -2,8 +2,13 @@ export const appointmentStatus = [
   'Disponível',
   'Reservado',
   'Confirmado',
-  'Realizado',
   'Cancelado',
+];
+export const appointmentStatusColor = [
+  '#FFFFFF',
+  '#3EA1C8',
+  '#793586',
+  '#C63200',
 ];
 
 export const range = [

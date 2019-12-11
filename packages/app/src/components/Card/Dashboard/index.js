@@ -1,5 +1,10 @@
 import React from 'react';
-import { MdEventAvailable, MdEventSeat } from 'react-icons/md';
+import {
+  MdEvent,
+  MdEventSeat,
+  MdEventAvailable,
+  MdEventBusy,
+} from 'react-icons/md';
 import { Container } from './styles';
 import { appointmentStatus } from '~/constants';
 
@@ -10,7 +15,18 @@ export default function Dashboard({ time, ...props }) {
         <strong>{time.time}</strong>
         <div>
           <span>
-            {time.appointment ? <MdEventSeat /> : <MdEventAvailable />}
+            {time.appointment ? (
+              appointmentStatus[time.appointment.status] === 'Reservado' ? (
+                <MdEventSeat />
+              ) : appointmentStatus[time.appointment.status] ===
+                'Confirmado' ? (
+                <MdEventAvailable />
+              ) : (
+                <MdEventBusy />
+              )
+            ) : (
+              <MdEvent />
+            )}
           </span>
 
           <span>

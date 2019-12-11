@@ -1,5 +1,5 @@
 import React from 'react';
-import { MdEventAvailable, MdEventSeat } from 'react-icons/md';
+import { MdEvent, MdEventSeat } from 'react-icons/md';
 import { Container } from './styles';
 import { appointmentStatus } from '~/constants';
 
@@ -18,9 +18,7 @@ export default function List({ time, ...props }) {
       <div>
         <strong>{time.time}</strong>
         <div>
-          <span>
-            {time.appointment ? <MdEventSeat /> : <MdEventAvailable />}
-          </span>
+          <span>{time.appointment ? <MdEventSeat /> : <MdEvent />}</span>
 
           <span>
             {time.appointment

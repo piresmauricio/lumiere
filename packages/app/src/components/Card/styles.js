@@ -18,6 +18,7 @@ export const Container = styled.li`
 
   span {
     display: flex;
+    align-items: center;
     margin-top: 3px;
     color: ${props => (props.status ? '#eee' : '#999')};
   }
