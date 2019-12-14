@@ -6,10 +6,13 @@ export const appointmentStatus = [
 ];
 export const appointmentStatusColor = [
   '#FFFFFF',
-  '#3EA1C8',
-  '#793586',
+  '#6A717D',
+  '#C17285',
   '#C63200',
 ];
+
+export const primaryColor = '#c17285';
+export const secondaryColor = '#d9a0a7';
 
 export const range = [
   7,

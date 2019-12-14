@@ -26,7 +26,7 @@ import { Tooltip } from '@rmwc/tooltip';
 import '@rmwc/tooltip/tooltip.css';
 
 import api from '~/service/api';
-import { range, weekDay } from '~/constants';
+import { range, weekDay, appointmentStatusColor } from '~/constants';
 import { Container, ModeDashView, ModeListView, Scroll } from './styles';
 import Card from '~/components/Card';
 import CardDashboard from '~/components/Card/Dashboard';
@@ -137,13 +137,7 @@ export default function Dashboard() {
               opacity={time.past ? 0.6 : 1}
               background={
                 time.appointment &&
-                (time.appointment.status === 1
-                  ? '#3EA1C8'
-                  : time.appointment.status === 2
-                  ? '#793586'
-                  : time.appointment.status === 3
-                  ? '#C63200'
-                  : '#fff')
+                appointmentStatusColor[time.appointment.status]
               }
             >
               {modeview === 'dashboard' ? (
