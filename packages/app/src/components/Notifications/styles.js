@@ -3,7 +3,7 @@ import { lighten } from 'polished';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
 import * as consts from '~/styles/breakpoints';
-import { primaryColor } from '~/constants';
+import { strongColorHeader } from '~/constants';
 
 export const Container = styled.div`
   position: relative;
@@ -24,7 +24,7 @@ export const Badge = styled.button`
         top: 0;
         width: 8px;
         height: 8px;
-        background: #ff5c33;
+        background: #c17285;
         content: '';
         border-radius: 50%;
       }
@@ -87,7 +87,7 @@ export const Notification = styled.div`
     font-size: 12px;
     border: 0;
     background: none;
-    color: ${lighten(0.2, primaryColor)};
+    color: ${lighten(0.2, strongColorHeader)};
     padding: 0 5px;
     margin: 0 5px;
     border-left: 1px solid rgba(255, 255, 255, 0.1);
@@ -101,7 +101,7 @@ export const Notification = styled.div`
         display: inline-block;
         width: 6px;
         height: 6px;
-        background: #ff5c33;
+        background: #c17285;
         border-radius: 50%;
       }
     `}

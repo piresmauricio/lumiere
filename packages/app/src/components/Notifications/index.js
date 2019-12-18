@@ -2,8 +2,9 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { MdNotifications } from 'react-icons/md';
 import { parseISO, formatDistance } from 'date-fns';
 import pt from 'date-fns/locale/pt';
+
 import api from '~/service/api';
-import { primaryColor } from "~/constants";
+import { strongColorHeader } from '~/constants';
 
 import {
   Container,
@@ -58,7 +59,7 @@ export default function Notifications() {
   return (
     <Container>
       <Badge onClick={handleToggleVisible} hasUnread={hasUnread}>
-        <MdNotifications color={primaryColor} size={20} />
+        <MdNotifications color={strongColorHeader} size={20} />
       </Badge>
 
       <NotificationList visible={visible}>

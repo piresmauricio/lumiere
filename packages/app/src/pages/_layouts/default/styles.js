@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { primaryColor, secondaryColor } from '~/constants';
+import { primaryColor, secondaryColor, strongColorBody } from '~/constants';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -7,5 +7,5 @@ export const Wrapper = styled.div`
   height: 100%;
   background: linear-gradient(-90deg, ${primaryColor}, ${secondaryColor});
   overflow: auto;
-  color: #fff;
+  color: ${strongColorBody};
 `;

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { Container, Content, Profile } from './styles';
-import logo from '~/assets/logo-makeup.png';
+import logo from '~/assets/nova-logo-pxm.png';
 import Notifications from '~/components/Notifications';
 
 export default function Header() {
@@ -14,7 +14,7 @@ export default function Header() {
       <Content>
         <nav>
           <Link to="/dashboard">
-            <img src={logo} alt="Ema" />
+            <img src={logo} alt="Logo" />
           </Link>
           <Link to="/dashboard">DASHBOARD</Link>
         </nav>

@@ -4,16 +4,21 @@ export const appointmentStatus = [
   'Confirmado',
   'Cancelado',
 ];
+
+// Colors
 export const appointmentStatusColor = [
   '#FFFFFF',
-  '#6A717D',
-  '#C17285',
-  '#C63200',
+  '#D5E5C1',
+  '#F8C0C3',
+  '#FFFFFF',
 ];
 
 export const primaryColor = '#c17285';
 export const secondaryColor = '#d9a0a7';
+export const strongColorHeader = '#000';
+export const strongColorBody = '#fff';
 
+// Others
 export const range = [
   7,
   8,
