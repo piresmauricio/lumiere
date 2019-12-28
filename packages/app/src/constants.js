@@ -13,9 +13,16 @@ export const appointmentStatusColor = [
   '#FFFFFF',
 ];
 
-export const primaryColor = '#c17285';
-export const secondaryColor = '#d9a0a7';
-export const strongColorHeader = '#000';
+/*
+#CA4A8E
+#874991
+#414D90
+#656899
+#60DCB6
+*/
+export const primaryColor = '#CA4A8E';
+export const secondaryColor = '#60DCB6';
+export const strongColorHeader = '#656899';
 export const strongColorBody = '#fff';
 
 // Others

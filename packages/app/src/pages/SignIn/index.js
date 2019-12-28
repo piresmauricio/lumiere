@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
 
-import logo from '~/assets/nova-logo-pxm.png';
+import logo from '~/assets/3.png';
 import { signInRequest } from '~/store/modules/auth/actions';
 
 // Validações Yup

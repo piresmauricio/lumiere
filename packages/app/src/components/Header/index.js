@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { Container, Content, Profile } from './styles';
-import logo from '~/assets/nova-logo-pxm.png';
+import logo from '~/assets/1.png';
 import Notifications from '~/components/Notifications';
 
 export default function Header() {
