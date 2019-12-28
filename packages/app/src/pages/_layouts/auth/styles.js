@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
+import { primaryColor, secondaryColor } from '~/constants';
 
 export const Wrapper = styled.div`
   height: 100%;
-  background: linear-gradient(-90deg, #a273ab, #793586);
+
+  background: linear-gradient(-90deg, ${primaryColor}, ${secondaryColor});
 
   display: flex;
   justify-content: center;
@@ -45,7 +47,7 @@ export const Content = styled.div`
     button {
       margin: 5px 0 0;
       height: 44px;
-      background: #793586;
+      background: #fb6f91;
       font-weight: bold;
       color: #fff;
       border: 0;
@@ -53,7 +55,7 @@ export const Content = styled.div`
       font-size: 16px;
 
       &:hover {
-        background: ${darken(0.03, '#793586')};
+        background: ${darken(0.03, '#fb6f91')};
       }
     }
 

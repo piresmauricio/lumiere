@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
-import * as device from '~/styles/breakpoints';
-
 export const Container = styled.div`
   display: flex;
   align-self: center;

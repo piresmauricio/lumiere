@@ -1,50 +1,33 @@
-import {
-  MdChevronLeft,
-  MdChevronRight,
-  MdViewList,
-  MdViewModule,
-} from 'react-icons/md';
 import React, { useState, useMemo, useEffect } from 'react';
-import {
-  format,
-  subDays,
-  addDays,
-  setHours,
-  setMinutes,
-  setSeconds,
-  isBefore,
-  isToday,
-  isTomorrow,
-  isYesterday,
-  getISODay,
-  parseISO,
-} from 'date-fns';
+import * as iconMd from 'react-icons/md';
+import * as dateFns from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
+import { Tooltip } from '@rmwc/tooltip';
 import pt from 'date-fns/locale/pt';
-import Tooltip from '@material-ui/core/Tooltip';
+import '@rmwc/tooltip/tooltip.css';
 
-import api from '~/service/api';
-import { range, weekDay } from '~/constants';
 import { Container, ModeDashView, ModeListView, Scroll } from './styles';
+import * as consts from '~/constants';
+import api from '~/service/api';
 import Card from '~/components/Card';
-import CardDashboard from '~/components/Card/Dashboard';
 import CardList from '~/components/Card/List';
+import CardDashboard from '~/components/Card/Dashboard';
 
 export default function Dashboard() {
   const [schedule, setSchedule] = useState([]);
   const [date, setDate] = useState(new Date());
   const [modeview, setModeview] = useState('dashboard');
 
-  if (isToday(date)) {
-    weekDay[getISODay(date)] = 'Hoje';
-  } else if (isTomorrow(date)) {
-    weekDay[getISODay(date)] = 'Amanhã';
-  } else if (isYesterday(date)) {
-    weekDay[getISODay(date)] = 'Ontem';
+  if (dateFns.isToday(date)) {
+    consts.weekDay[dateFns.getISODay(date)] = 'Hoje';
+  } else if (dateFns.isTomorrow(date)) {
+    consts.weekDay[dateFns.getISODay(date)] = 'Amanhã';
+  } else if (dateFns.isYesterday(date)) {
+    consts.weekDay[dateFns.getISODay(date)] = 'Ontem';
   }
 
   const dateFormatted = useMemo(
-    () => format(date, "d 'de' MMMM", { locale: pt }),
+    () => dateFns.format(date, "d 'de' MMMM", { locale: pt }),
     [date]
   );
 
@@ -56,17 +39,20 @@ export default function Dashboard() {
 
       const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-      const data = range.map(hour => {
-        const checkDate = setSeconds(setMinutes(setHours(date, hour), 0), 0);
+      const data = consts.range.map(hour => {
+        const checkDate = dateFns.setSeconds(
+          dateFns.setMinutes(dateFns.setHours(date, hour), 0),
+          0
+        );
         const compareDate = utcToZonedTime(checkDate, timezone);
 
         return {
           time: `${hour}:00h`,
-          past: isBefore(compareDate, new Date()),
+          past: dateFns.isBefore(compareDate, new Date()),
           appointment: response.data.find(
             a =>
-              format(parseISO(a.date), "yyyy-MM-dd'T'HH':'mm") ===
-              format(compareDate, "yyyy-MM-dd'T'HH':'mm")
+            dateFns.format(dateFns.parseISO(a.date), "yyyy-MM-dd'T'HH':'mm") ===
+            dateFns.format(compareDate, "yyyy-MM-dd'T'HH':'mm")
           ),
         };
       });
@@ -78,11 +64,11 @@ export default function Dashboard() {
   }, [date]);
 
   function handlePrevDay() {
-    setDate(subDays(date, 1));
+    setDate(dateFns.subDays(date, 1));
   }
 
   function handleNextDay() {
-    setDate(addDays(date, 1));
+    setDate(dateFns.addDays(date, 1));
   }
 
   useEffect(() => {
@@ -93,34 +79,34 @@ export default function Dashboard() {
     <Container view={modeview}>
       <header>
         <button type="button" onClick={handlePrevDay}>
-          <MdChevronLeft size={36} color="#FFF" />
+          <iconMd.MdChevronLeft size={36} color={consts.strongColorBody} />
         </button>
-        <strong>{weekDay[getISODay(date)]}</strong>
+        <strong>{consts.weekDay[dateFns.getISODay(date)]}</strong>
         <button type="button" onClick={handleNextDay}>
-          <MdChevronRight size={36} color="#FFF" />
+          <iconMd.MdChevronRight size={36} color={consts.strongColorBody} />
         </button>
       </header>
 
       <div>
         <span>{dateFormatted}</span>
         <div>
-          <Tooltip title="Lista" placement="left-start">
+          <Tooltip content="Lista" align="left" showArrow>
             <ModeListView
               type="button"
               view={modeview}
               onClick={() => setModeview('list')}
             >
-              <MdViewList size={24} color="#FFF" />
+              <iconMd.MdViewList size={24} color={consts.strongColorBody} />
             </ModeListView>
           </Tooltip>
 
-          <Tooltip title="Dashboard" placement="right-start">
+          <Tooltip content="Dashboard" align="right" showArrow>
             <ModeDashView
               type="button"
               view={modeview}
               onClick={() => setModeview('dashboard')}
             >
-              <MdViewModule size={24} color="#FFF" />
+              <iconMd.MdViewModule size={24} color={consts.strongColorBody} />
             </ModeDashView>
           </Tooltip>
         </div>
@@ -131,11 +117,11 @@ export default function Dashboard() {
           {schedule.map(time => (
             <Card
               key={time.time}
-              border="1px solid #eee"
-              opacity={time.past ? 0.6 : 1}
+              border="1px solid #FFF"
+              opacity={time.past ? 0.7 : 1}
               background={
                 time.appointment &&
-                (time.appointment.status ? '#793586' : '#fff')
+                consts.appointmentStatusColor[time.appointment.status]
               }
             >
               {modeview === 'dashboard' ? (

@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-
 import * as device from '~/styles/breakpoints';
+import { strongColorHeader } from '~/constants';
 
 export const Container = styled.div`
   width: 100%;
-  background: #fff;
+  background: #fcfff9;
   padding: 0 30px;
 
   @media (max-width: ${device.mobileL}) {
@@ -28,15 +28,17 @@ export const Content = styled.div`
     align-items: center;
 
     img {
-      width: 100px;
+
+      max-width: 145px;
+      max-height: 145px;
+      border-radius: 5px;
       margin-right: 20px;
       padding-right: 20px;
-      border-right: 1px solid #eee;
     }
 
     a {
       font-weight: bold;
-      color: #793586;
+      color: ${strongColorHeader};
     }
   }
 
