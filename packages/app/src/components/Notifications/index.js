@@ -4,7 +4,7 @@ import { parseISO, formatDistance } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 
 import api from '~/service/api';
-import { strongColorHeader } from '~/constants';
+import * as constants from '~/constants';
 
 import {
   Container,
@@ -59,7 +59,7 @@ export default function Notifications() {
   return (
     <Container>
       <Badge onClick={handleToggleVisible} hasUnread={hasUnread}>
-        <MdNotifications color={strongColorHeader} size={20} />
+        <MdNotifications color={constants.ColorPallet[3]} size={20} />
       </Badge>
 
       <NotificationList visible={visible}>

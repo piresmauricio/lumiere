@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { strongColorBody } from '~/constants';
+
+import { ColorPallet } from '~/constants';
 
 export const Container = styled.li`
   background: ${props => props.background || '#fff'};
@@ -12,7 +13,7 @@ export const Container = styled.li`
 
   strong {
     display: flex;
-    color: ${props => (props.status ? '#EEE' : strongColorBody)};
+    color: ${props => (props.status ? '#EEE' : ColorPallet[4])};
     font-size: 20px;
     font-weight: normal;
   }
@@ -21,7 +22,7 @@ export const Container = styled.li`
     display: flex;
     align-items: center;
     margin-top: 3px;
-    color: ${props => (props.status ? '#EEE' : strongColorBody)};
+    color: ${props => (props.status ? '#EEE' : ColorPallet[4])};
   }
 
   :hover {

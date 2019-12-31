@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
-import { primaryColor, secondaryColor } from '~/constants';
+
+import * as constants from '~/constants';
 
 export const Wrapper = styled.div`
   height: 100%;
 
-  background: linear-gradient(-90deg, ${primaryColor}, ${secondaryColor});
+  background: linear-gradient(
+    -90deg,
+    ${constants.ColorPallet[0]},
+    ${constants.ColorPallet[1]}
+  );
 
   display: flex;
   justify-content: center;

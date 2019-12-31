@@ -1,13 +1,11 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import * as iconMd from 'react-icons/md';
 import * as dateFns from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
-import { Tooltip } from '@rmwc/tooltip';
 import pt from 'date-fns/locale/pt';
-import '@rmwc/tooltip/tooltip.css';
+import * as iconMd from 'react-icons/md';
 
 import { Container, ModeDashView, ModeListView, Scroll } from './styles';
-import * as consts from '~/constants';
+import * as constants from '~/constants';
 import api from '~/service/api';
 import Card from '~/components/Card';
 import CardList from '~/components/Card/List';
@@ -19,11 +17,11 @@ export default function Dashboard() {
   const [modeview, setModeview] = useState('dashboard');
 
   if (dateFns.isToday(date)) {
-    consts.weekDay[dateFns.getISODay(date)] = 'Hoje';
+    constants.weekDay[dateFns.getISODay(date)] = 'Hoje';
   } else if (dateFns.isTomorrow(date)) {
-    consts.weekDay[dateFns.getISODay(date)] = 'Amanhã';
+    constants.weekDay[dateFns.getISODay(date)] = 'Amanhã';
   } else if (dateFns.isYesterday(date)) {
-    consts.weekDay[dateFns.getISODay(date)] = 'Ontem';
+    constants.weekDay[dateFns.getISODay(date)] = 'Ontem';
   }
 
   const dateFormatted = useMemo(
@@ -39,7 +37,7 @@ export default function Dashboard() {
 
       const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-      const data = consts.range.map(hour => {
+      const data = constants.range.map(hour => {
         const checkDate = dateFns.setSeconds(
           dateFns.setMinutes(dateFns.setHours(date, hour), 0),
           0
@@ -79,36 +77,32 @@ export default function Dashboard() {
     <Container view={modeview}>
       <header>
         <button type="button" onClick={handlePrevDay}>
-          <iconMd.MdChevronLeft size={36} color={consts.strongColorBody} />
+          <iconMd.MdChevronLeft size={36} color={constants.ColorPallet[2]} />
         </button>
-        <strong>{consts.weekDay[dateFns.getISODay(date)]}</strong>
+        <strong>{constants.weekDay[dateFns.getISODay(date)]}</strong>
         <button type="button" onClick={handleNextDay}>
-          <iconMd.MdChevronRight size={36} color={consts.strongColorBody} />
+          <iconMd.MdChevronRight size={36} color={constants.ColorPallet[2]} />
         </button>
       </header>
 
       <div>
         <span>{dateFormatted}</span>
         <div>
-          <Tooltip content="Lista" align="left" showArrow>
-            <ModeListView
-              type="button"
-              view={modeview}
-              onClick={() => setModeview('list')}
-            >
-              <iconMd.MdViewList size={24} color={consts.strongColorBody} />
-            </ModeListView>
-          </Tooltip>
+          <ModeListView
+            type="button"
+            view={modeview}
+            onClick={() => setModeview('list')}
+          >
+            <iconMd.MdViewList size={24} color={constants.ColorPallet[2]} />
+          </ModeListView>
 
-          <Tooltip content="Dashboard" align="right" showArrow>
-            <ModeDashView
-              type="button"
-              view={modeview}
-              onClick={() => setModeview('dashboard')}
-            >
-              <iconMd.MdViewModule size={24} color={consts.strongColorBody} />
-            </ModeDashView>
-          </Tooltip>
+          <ModeDashView
+            type="button"
+            view={modeview}
+            onClick={() => setModeview('dashboard')}
+          >
+            <iconMd.MdViewModule size={24} color={constants.ColorPallet[2]} />
+          </ModeDashView>
         </div>
       </div>
 
@@ -121,7 +115,7 @@ export default function Dashboard() {
               opacity={time.past ? 0.7 : 1}
               background={
                 time.appointment &&
-                consts.appointmentStatusColor[time.appointment.status]
+                constants.ColorPallet[time.appointment.status]
               }
             >
               {modeview === 'dashboard' ? (

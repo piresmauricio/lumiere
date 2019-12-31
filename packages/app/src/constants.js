@@ -1,29 +1,25 @@
-export const appointmentStatus = [
-  'Disponível',
-  'Reservado',
-  'Confirmado',
-  'Cancelado',
-];
-
 // Colors
-export const appointmentStatusColor = [
-  '#FFFFFF',
-  '#D5E5C1',
-  '#F8C0C3',
-  '#FFFFFF',
+export const ColorPallet = [
+  '#c17285',
+  '#A93F55',
+  '#555555', // 19323C
+  '#F3F7F0',
+  '#d9a0a7',
+  '#EBEBEB',
+  '#EEEEEE',
 ];
 
-/*
-#CA4A8E
-#874991
-#414D90
-#656899
-#60DCB6
-*/
-export const primaryColor = '#CA4A8E';
-export const secondaryColor = '#60DCB6';
-export const strongColorHeader = '#656899';
-export const strongColorBody = '#fff';
+export const primaryColor = '#c17285';
+export const secondaryColor = '#d9a0a7';
+
+// Devices
+export const mobileS = '320px';
+export const mobileM = '375px';
+export const mobileL = '425px';
+export const tablet = '768px';
+export const laptop = '1024px';
+export const laptopL = '1440px';
+export const desktop = '2560px';
 
 // Others
 export const range = [
@@ -55,4 +51,11 @@ export const weekDay = [
   'Sexta-feira',
   'Sábado',
   'Domingo',
+];
+
+export const appointmentStatus = [
+  'Disponível',
+  'Reservado',
+  'Confirmado',
+  'Cancelado',
 ];

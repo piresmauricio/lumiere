@@ -2,8 +2,7 @@ import styled, { css } from 'styled-components';
 import { lighten } from 'polished';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
-import * as consts from '~/styles/breakpoints';
-import { strongColorHeader } from '~/constants';
+import * as constants from '~/constants';
 
 export const Container = styled.div`
   position: relative;
@@ -12,6 +11,7 @@ export const Container = styled.div`
 
 export const Badge = styled.button`
   background: none;
+  color: ${constants.ColorPallet[3]};
   border: 0;
   position: relative;
 
@@ -30,7 +30,7 @@ export const Badge = styled.button`
       }
     `}
 
-    @media (max-width: ${consts.mobileS}) {
+    @media (max-width: ${constants.mobileS}) {
         display: none;
     }
 `;
@@ -87,7 +87,7 @@ export const Notification = styled.div`
     font-size: 12px;
     border: 0;
     background: none;
-    color: ${lighten(0.2, strongColorHeader)};
+    color: ${lighten(0.2, constants.ColorPallet[3])};
     padding: 0 5px;
     margin: 0 5px;
     border-left: 1px solid rgba(255, 255, 255, 0.1);

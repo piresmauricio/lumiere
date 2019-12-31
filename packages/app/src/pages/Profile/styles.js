@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import { darken } from 'polished';
-import { primaryColor } from '~/constants';
+
+import * as constants from '~/constants';
 
 export const Container = styled.div`
   margin: 50px auto;
@@ -45,7 +46,7 @@ export const Container = styled.div`
     button {
       margin: 5px 0 0;
       height: 44px;
-      background: ${primaryColor};
+      background: ${constants.ColorPallet[0]};
       font-weight: bold;
       color: #fff;
       border: 0;
@@ -53,7 +54,7 @@ export const Container = styled.div`
       font-size: 16px;
 
       &:hover {
-        background: ${darken(0.03, primaryColor)};
+        background: ${darken(0.03, constants.ColorPallet[0])};
       }
     }
 
