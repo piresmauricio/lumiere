@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.js": "/static/js/main.bddd8fbe.chunk.js",
+    "main.js.map": "/static/js/main.bddd8fbe.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.b19237e8.js",
+    "runtime-main.js.map": "/static/js/runtime-main.b19237e8.js.map",
+    "static/css/2.07b170e0.chunk.css": "/static/css/2.07b170e0.chunk.css",
+    "static/js/2.fcc68062.chunk.js": "/static/js/2.fcc68062.chunk.js",
+    "static/js/2.fcc68062.chunk.js.map": "/static/js/2.fcc68062.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.c6b16986a39e32d4f7265dbad8c627ab.js": "/precache-manifest.c6b16986a39e32d4f7265dbad8c627ab.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.07b170e0.chunk.css.map": "/static/css/2.07b170e0.chunk.css.map",
+    "static/media/nova-logo-pxm.png": "/static/media/nova-logo-pxm.6175d458.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b19237e8.js",
+    "static/css/2.07b170e0.chunk.css",
+    "static/js/2.fcc68062.chunk.js",
+    "static/js/main.bddd8fbe.chunk.js"
+  ]
+}

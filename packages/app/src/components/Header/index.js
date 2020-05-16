@@ -18,6 +18,7 @@ export default function Header() {
           </Link>
           <Link to="/dashboard">AGENDA</Link>
         </nav>
+
         <aside>
           <Notifications />
 

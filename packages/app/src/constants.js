@@ -9,8 +9,8 @@ export const ColorPallet = [
   '#EEEEEE',
 ];
 
-export const primaryColor = '#c17285';
-export const secondaryColor = '#d9a0a7';
+// export const primaryColor = '#c17285';
+// export const secondaryColor = '#d9a0a7';
 
 // Devices
 export const mobileS = '320px';

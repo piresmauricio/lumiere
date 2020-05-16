@@ -115,7 +115,7 @@ export default function Dashboard() {
               opacity={time.past ? 0.7 : 1}
               background={
                 time.appointment &&
-                constants.ColorPallet[time.appointment.status]
+                constants.ColorPallet[time.appointment.status - 1]
               }
             >
               {modeview === 'dashboard' ? (

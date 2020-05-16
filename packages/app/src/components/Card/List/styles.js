@@ -12,7 +12,7 @@ export const Container = styled.li`
 
     strong {
       display: flex;
-      color: ${props => (props.status ? '#333' : '#999')};
+      color: ${props => (props.status ? '#eee' : '#999')};
       font-size: 20px;
       font-weight: normal;
     }
@@ -21,7 +21,7 @@ export const Container = styled.li`
       margin: 3px 5px 3px 0;
       padding: 0;
       font-size: 12px;
-      color: ${props => (props.status ? '#333' : '#999')};
+      color: ${props => (props.status ? '#eee' : '#999')};
     }
 
     div {
@@ -36,7 +36,7 @@ export const Container = styled.li`
     align-items: center;
     font-size: 16px;
     padding: 0 10px;
-    color: ${props => (props.status ? '#333' : '#999')};
+    color: ${props => (props.status ? '#eee' : '#999')};
   }
 
   img {
