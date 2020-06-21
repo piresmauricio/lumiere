@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { lighten } from 'polished';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
-import * as constants from '~/constants';
+import * as constants from '../../constants';
 
 export const Container = styled.div`
   position: relative;
@@ -24,7 +24,7 @@ export const Badge = styled.button`
         top: 0;
         width: 8px;
         height: 8px;
-        background: #c17285;
+        background: #add689;
         content: '';
         border-radius: 50%;
       }
@@ -101,7 +101,7 @@ export const Notification = styled.div`
         display: inline-block;
         width: 6px;
         height: 6px;
-        background: #c17285;
+        background: #add689;
         border-radius: 50%;
       }
     `}

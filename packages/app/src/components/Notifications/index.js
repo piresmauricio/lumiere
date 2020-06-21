@@ -59,7 +59,7 @@ export default function Notifications() {
   return (
     <Container>
       <Badge onClick={handleToggleVisible} hasUnread={hasUnread}>
-        <MdNotifications color={constants.ColorPallet[3]} size={20} />
+        <MdNotifications size={20} />
       </Badge>
 
       <NotificationList visible={visible}>
@@ -72,8 +72,7 @@ export default function Notifications() {
                 <button
                   type="button"
                   onClick={() => handleMarkAsRead(notification._id)}
-                >
-                  Marcar como lida
+                >Marcar como lida
                 </button>
               )}
             </Notification>

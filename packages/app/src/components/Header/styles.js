@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-import * as constants from '~/constants';
+import * as constants from '../../constants';
 
 export const Container = styled.div`
   width: 100%;
   background: linear-gradient(
     -90deg,
     ${constants.ColorPallet[0]},
-    ${constants.ColorPallet[4]}
+    ${constants.ColorPallet[1]}
   );
   padding: 0 30px;
 
@@ -32,8 +32,8 @@ export const Content = styled.div`
     align-items: center;
 
     img {
-      max-width: 145px;
-      max-height: 145px;
+      max-width: 100px;
+      max-height: 100px;
       border-radius: 5px;
       margin-right: 20px;
       padding-right: 20px;
@@ -55,7 +55,7 @@ export const Profile = styled.div`
   display: flex;
   margin-left: 20px;
   padding-left: 20px;
-  border-left: 1px solid #eee;
+  border-left: 1px solid ${constants.ColorPallet[3]};
   color: ${constants.ColorPallet[3]};
 
   div {

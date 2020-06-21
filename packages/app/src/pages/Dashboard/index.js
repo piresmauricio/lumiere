@@ -73,15 +73,18 @@ export default function Dashboard() {
     setModeview(modeview);
   }, [modeview]);
 
+  
   return (
     <Container view={modeview}>
       <header>
         <button type="button" onClick={handlePrevDay}>
-          <iconMd.MdChevronLeft size={36} color={constants.ColorPallet[2]} />
+          <iconMd.MdChevronLeft size={36} color={constants.PaletaPinkTonsPasteis[5]} />
         </button>
+   
         <strong>{constants.weekDay[dateFns.getISODay(date)]}</strong>
+   
         <button type="button" onClick={handleNextDay}>
-          <iconMd.MdChevronRight size={36} color={constants.ColorPallet[2]} />
+          <iconMd.MdChevronRight size={36} color={constants.PaletaPinkTonsPasteis[5]} />
         </button>
       </header>
 
@@ -93,7 +96,7 @@ export default function Dashboard() {
             view={modeview}
             onClick={() => setModeview('list')}
           >
-            <iconMd.MdViewList size={24} color={constants.ColorPallet[2]} />
+            <iconMd.MdViewList size={24} color={constants.PaletaPinkTonsPasteis[5]} />
           </ModeListView>
 
           <ModeDashView
@@ -101,7 +104,7 @@ export default function Dashboard() {
             view={modeview}
             onClick={() => setModeview('dashboard')}
           >
-            <iconMd.MdViewModule size={24} color={constants.ColorPallet[2]} />
+            <iconMd.MdViewModule size={24} color={constants.PaletaPinkTonsPasteis[5]} />
           </ModeDashView>
         </div>
       </div>
@@ -112,11 +115,12 @@ export default function Dashboard() {
             <Card
               key={time.time}
               border="1px solid #FFF"
-              opacity={time.past ? 0.7 : 1}
+              opacity={time.past ? 0.5 : 1}
               background={
                 time.appointment &&
-                constants.ColorPallet[time.appointment.status - 1]
+                constants.ColorStatus[time.appointment.status - 1]
               }
+              color={constants.PaletaPinkTonsPasteis[5]}
             >
               {modeview === 'dashboard' ? (
                 <CardDashboard

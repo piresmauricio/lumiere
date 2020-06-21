@@ -5,7 +5,7 @@ import { darken } from 'polished';
 import * as constants from '~/constants';
 
 export const Container = styled.div`
-  margin: 50px auto;
+  margin: 10px auto;
   width: 100%;
   max-width: 600px;
   padding: 15px;
@@ -13,7 +13,7 @@ export const Container = styled.div`
   form {
     display: flex;
     flex-direction: column;
-    margin-top: 30px;
+    margin-top: 0px;
 
     input {
       background: rgba(0, 0, 0, 0.1);
@@ -21,11 +21,11 @@ export const Container = styled.div`
       border-radius: 4px;
       height: 44px;
       padding: 0 15px;
-      color: #fff;
+      color: ${constants.ColorPallet[7]};
       margin: 0 0 5px;
 
       &::placeholder {
-        color: rgba(255, 255, 255, 0.7);
+        color: rgba(${constants.ColorPallet[0]}, 0.7);
       }
     }
 
@@ -74,7 +74,7 @@ export const Container = styled.div`
     width: 100%;
     margin: 10px 0 0;
     height: 44px;
-    background: #f64c75;
+    background: ${constants.ColorPallet[1]};
     font-weight: bold;
     color: #fff;
     border: 0;
@@ -82,7 +82,7 @@ export const Container = styled.div`
     font-size: 16px;
 
     &:hover {
-      background: ${darken(0.03, '#f64c75')};
+      background: ${darken(0.03, constants.ColorPallet[1])};
     }
   }
 `;

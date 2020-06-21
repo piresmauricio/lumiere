@@ -1,18 +1,52 @@
-// Colors
+// Paleta de Cores
+export const ColorStatus = [
+  '#CF8E80',
+  '#c17285',
+  '#d9a0a7',
+];
+
 export const ColorPallet = [
   '#c17285',
   '#A93F55',
-  '#555555', // 19323C
+  '#555555',
   '#F3F7F0',
   '#d9a0a7',
   '#EBEBEB',
   '#EEEEEE',
+  '#000000',
 ];
 
-// export const primaryColor = '#c17285';
-// export const secondaryColor = '#d9a0a7';
+export const PaletaTonsPasteis = [
+  '#916953',
+  '#CF8E80',
+  '#FCB5B5',
+  '#FCDDF2',
+  '#FAF6F6',
+  '#555555',
+  '#BDBDBD',
+];
 
-// Devices
+export const PaletaTonsPasteis02 = [
+  '#997B66',
+  '#D08C60',
+  '#F1DCA7',
+  '#D9AE94',
+  '#9B9B7A',
+  '#797D62',
+  '#555555',
+];
+
+export const PaletaPinkTonsPasteis = [
+  '#ffcdb2',
+  '#FFB4A2',
+  '#E5989B',
+  '#B5838D',
+  '#6D6875',
+  '#555555',
+  '#FAF6F6',
+];
+
+// Responsividade
 export const mobileS = '320px';
 export const mobileM = '375px';
 export const mobileL = '425px';
@@ -21,7 +55,7 @@ export const laptop = '1024px';
 export const laptopL = '1440px';
 export const desktop = '2560px';
 
-// Others
+// Outros
 export const range = [
   7,
   8,
@@ -42,6 +76,7 @@ export const range = [
   23,
 ];
 
+// Dias da semana
 export const weekDay = [
   '',
   'Segunda-feira',
@@ -53,6 +88,7 @@ export const weekDay = [
   'Domingo',
 ];
 
+// Status do Agendamento
 export const appointmentStatus = [
   'Disponível',
   'Reservado',

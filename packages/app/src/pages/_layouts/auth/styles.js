@@ -2,19 +2,28 @@ import styled from 'styled-components';
 import { darken } from 'polished';
 
 import * as constants from '~/constants';
+import { ReactComponent as Logo } from './undraw_login.svg';
 
 export const Wrapper = styled.div`
   height: 100%;
-
-  background: linear-gradient(
-    -90deg,
-    ${constants.ColorPallet[0]},
-    ${constants.ColorPallet[1]}
-  );
-
+  background: ${constants.ColorPallet[3]};
   display: flex;
   justify-content: center;
   align-items: center;
+
+  div {
+    display: flex;
+    justify-content: flex-end;
+  }
+`;
+
+export const Planodefundo = styled(Logo)`
+  width: 250px;
+  height: 250px;
+
+  display: flex;
+  justify-content: right;
+  align-items: right;
 `;
 
 export const Content = styled.div`
@@ -33,11 +42,11 @@ export const Content = styled.div`
       border-radius: 4px;
       height: 44px;
       padding: 0 15px;
-      color: #fff;
+      color: ${constants.ColorPallet[2]};
       margin: 0 0 5px;
 
       &::placeholder {
-        color: rgba(255, 255, 255, 0.7);
+        color: rgba(${constants.ColorPallet[2]}, 0.7);
       }
     }
 
@@ -52,7 +61,7 @@ export const Content = styled.div`
     button {
       margin: 5px 0 0;
       height: 44px;
-      background: #fb6f91;
+      background: ${constants.ColorPallet[1]};
       font-weight: bold;
       color: #fff;
       border: 0;
@@ -60,12 +69,12 @@ export const Content = styled.div`
       font-size: 16px;
 
       &:hover {
-        background: ${darken(0.03, '#fb6f91')};
+        background: ${darken(0.03, constants.ColorPallet[1])};
       }
     }
 
     a {
-      color: #fff;
+      color: ${constants.ColorPallet[2]};
       margin-top: 15px;
       font-size: 14px;
       opacity: 0.8;

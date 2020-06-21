@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { Container, Content, Profile } from './styles';
-import logo from '~/assets/nova-logo-pxm.png';
-import Notifications from '~/components/Notifications';
+// import logo from '~/assets/3.png';
+import Notifications from '../Notifications';
 
 export default function Header() {
   const profile = useSelector(state => state.user.profile);
@@ -13,10 +13,7 @@ export default function Header() {
     <Container>
       <Content>
         <nav>
-          <Link to="/dashboard">
-            <img src={logo} alt="Logo" />
-          </Link>
-          <Link to="/dashboard">AGENDA</Link>
+          <Link to="/dashboard">SUA AGENDA</Link>
         </nav>
 
         <aside>
