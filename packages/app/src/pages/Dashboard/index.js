@@ -73,16 +73,15 @@ export default function Dashboard() {
     setModeview(modeview);
   }, [modeview]);
 
-  
   return (
     <Container view={modeview}>
       <header>
         <button type="button" onClick={handlePrevDay}>
           <iconMd.MdChevronLeft size={36} color={constants.PaletaPinkTonsPasteis[5]} />
         </button>
-   
+
         <strong>{constants.weekDay[dateFns.getISODay(date)]}</strong>
-   
+
         <button type="button" onClick={handleNextDay}>
           <iconMd.MdChevronRight size={36} color={constants.PaletaPinkTonsPasteis[5]} />
         </button>

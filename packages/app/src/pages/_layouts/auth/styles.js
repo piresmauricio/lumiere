@@ -2,28 +2,17 @@ import styled from 'styled-components';
 import { darken } from 'polished';
 
 import * as constants from '~/constants';
-import { ReactComponent as Logo } from './undraw_login.svg';
 
 export const Wrapper = styled.div`
   height: 100%;
   background: ${constants.ColorPallet[3]};
+
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  div {
-    display: flex;
-    justify-content: flex-end;
-  }
-`;
-
-export const Planodefundo = styled(Logo)`
-  width: 250px;
-  height: 250px;
-
-  display: flex;
-  justify-content: right;
-  align-items: right;
+  padding-top: 90px;
 `;
 
 export const Content = styled.div`
