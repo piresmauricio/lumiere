@@ -49,8 +49,10 @@ export default function Dashboard() {
           past: dateFns.isBefore(compareDate, new Date()),
           appointment: response.data.find(
             a =>
-            dateFns.format(dateFns.parseISO(a.date), "yyyy-MM-dd'T'HH':'mm") ===
-            dateFns.format(compareDate, "yyyy-MM-dd'T'HH':'mm")
+              dateFns.format(
+                dateFns.parseISO(a.date),
+                "yyyy-MM-dd'T'HH':'mm"
+              ) === dateFns.format(compareDate, "yyyy-MM-dd'T'HH':'mm")
           ),
         };
       });
@@ -77,13 +79,19 @@ export default function Dashboard() {
     <Container view={modeview}>
       <header>
         <button type="button" onClick={handlePrevDay}>
-          <iconMd.MdChevronLeft size={36} color={constants.PaletaPinkTonsPasteis[5]} />
+          <iconMd.MdChevronLeft
+            size={36}
+            color={constants.PaletaPinkTonsPasteis[5]}
+          />
         </button>
 
         <strong>{constants.weekDay[dateFns.getISODay(date)]}</strong>
 
         <button type="button" onClick={handleNextDay}>
-          <iconMd.MdChevronRight size={36} color={constants.PaletaPinkTonsPasteis[5]} />
+          <iconMd.MdChevronRight
+            size={36}
+            color={constants.PaletaPinkTonsPasteis[5]}
+          />
         </button>
       </header>
 
@@ -95,7 +103,10 @@ export default function Dashboard() {
             view={modeview}
             onClick={() => setModeview('list')}
           >
-            <iconMd.MdViewList size={24} color={constants.PaletaPinkTonsPasteis[5]} />
+            <iconMd.MdViewList
+              size={24}
+              color={constants.PaletaPinkTonsPasteis[5]}
+            />
           </ModeListView>
 
           <ModeDashView
@@ -103,7 +114,10 @@ export default function Dashboard() {
             view={modeview}
             onClick={() => setModeview('dashboard')}
           >
-            <iconMd.MdViewModule size={24} color={constants.PaletaPinkTonsPasteis[5]} />
+            <iconMd.MdViewModule
+              size={24}
+              color={constants.PaletaPinkTonsPasteis[5]}
+            />
           </ModeDashView>
         </div>
       </div>

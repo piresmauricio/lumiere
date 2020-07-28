@@ -1,10 +1,10 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useState, useEffect, useMemo } from 'react';
 import { MdNotifications } from 'react-icons/md';
 import { parseISO, formatDistance } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 
 import api from '~/service/api';
-import * as constants from '~/constants';
 
 import {
   Container,
@@ -59,7 +59,7 @@ export default function Notifications() {
   return (
     <Container>
       <Badge onClick={handleToggleVisible} hasUnread={hasUnread}>
-        <MdNotifications size={20} />
+        <MdNotifications size={24} />
       </Badge>
 
       <NotificationList visible={visible}>
@@ -72,7 +72,8 @@ export default function Notifications() {
                 <button
                   type="button"
                   onClick={() => handleMarkAsRead(notification._id)}
-                >Marcar como lida
+                >
+                  Marcar como lida
                 </button>
               )}
             </Notification>

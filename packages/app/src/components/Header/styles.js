@@ -4,11 +4,7 @@ import * as constants from '../../constants';
 
 export const Container = styled.div`
   width: 100%;
-  background: linear-gradient(
-    -90deg,
-    ${constants.ColorPallet[0]},
-    ${constants.ColorPallet[1]}
-  );
+  background: #207868;
   padding: 0 30px;
 
   @media (max-width: ${constants.mobileL}) {
@@ -43,11 +39,41 @@ export const Content = styled.div`
       font-weight: bold;
       color: ${constants.ColorPallet[3]};
     }
+
+    button {
+      background: none;
+      border: none;
+      color: #fff;
+
+      margin-right: 30px;
+      margin-top: 5px;
+    }
+  }
+
+  span {
+    color: #f3f7f0;
+    font-weight: bold;
+    font-size: 16px;
+
+    @media (max-width: ${constants.mobileL}) {
+      display: none;
+    }
   }
 
   aside {
     display: flex;
     align-items: center;
+
+    div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      align-content: center;
+
+      svg {
+        margin: 7px;
+      }
+    }
   }
 `;
 

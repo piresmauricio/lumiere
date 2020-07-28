@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
 
+// eslint-disable-next-line import/named
+import { BtnGoogle, BtnFacebook } from '../_layouts/auth/styles';
+
 import { signInRequest } from '~/store/modules/auth/actions';
 
 // Validações Yup
@@ -25,11 +28,20 @@ export default function SignIn() {
   return (
     <>
       <Form schema={schema} onSubmit={handleSubmit}>
+        <BtnGoogle>Google</BtnGoogle>
+        <BtnFacebook>Facebook</BtnFacebook>
+
+        <hr />
+
         <Input name="email" type="email" placeholder="Seu e-mail" />
         <Input name="password" type="password" placeholder="Sua senha" />
-
+        <Link to="/register">Esqueci minha senha</Link>
         <button type="submit">{loading ? 'Carregando...' : 'Acessar'}</button>
-        <Link to="/register">Criar conta gratuita</Link>
+        <div>
+          <Link to="/register">
+            Não tem uma conta? <b>Registre-se</b>
+          </Link>
+        </div>
       </Form>
     </>
   );

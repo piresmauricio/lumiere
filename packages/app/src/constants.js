@@ -1,9 +1,5 @@
 // Paleta de Cores
-export const ColorStatus = [
-  '#CF8E80',
-  '#c17285',
-  '#d9a0a7',
-];
+export const ColorStatus = ['#CF8E80', '#c17285', '#d9a0a7'];
 
 export const ColorPallet = [
   '#c17285',

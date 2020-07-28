@@ -30,7 +30,7 @@ export const Container = styled.div`
     }
 
     span {
-      color: #fb6f91;
+      color: #207868;
       align-self: flex-start;
       margin: 0 0 15px 10px;
       font-size: 12px;
@@ -46,7 +46,7 @@ export const Container = styled.div`
     button {
       margin: 5px 0 0;
       height: 44px;
-      background: ${constants.ColorPallet[0]};
+      background: #207868;
       font-weight: bold;
       color: #fff;
       border: 0;
@@ -54,7 +54,7 @@ export const Container = styled.div`
       font-size: 16px;
 
       &:hover {
-        background: ${darken(0.03, constants.ColorPallet[0])};
+        background: ${darken(0.03, '#207868')};
       }
     }
 
@@ -74,7 +74,7 @@ export const Container = styled.div`
     width: 100%;
     margin: 10px 0 0;
     height: 44px;
-    background: ${constants.ColorPallet[1]};
+    background: #D85C59;
     font-weight: bold;
     color: #fff;
     border: 0;
@@ -82,7 +82,7 @@ export const Container = styled.div`
     font-size: 16px;
 
     &:hover {
-      background: ${darken(0.03, constants.ColorPallet[1])};
+      background: ${darken(0.03, '#D85C59')};
     }
   }
 `;
